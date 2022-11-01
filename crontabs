@@ -1,0 +1,2 @@
+15 0 * * * (path to backup.sh) -t (path to dir to back up) -d (path to dir to store backups)
+20 0 * * * (path to remove.sh) (path to dir that stores backups)
