@@ -1,19 +1,6 @@
 #!/bin/bash
 
 
-# Translate '--' options to '-' options
-args=()
-
-for arg; do
-	case "$arg" in 
-		--to-backup|-t)		args+=( -t )   ;;
-		--dir-backup|-d)	args+=( -d )   ;;
-		*)					args+=( $arg ) ;;
-	esac
-done
-
-set -- "${args[@]}"
-
 # Set current date
 DATE=$(date +"%Y-%m-%dT%H:%M:%S")
 
