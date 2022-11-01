@@ -16,10 +16,10 @@ fi
 BACKUP_DIR=$1
 
 # Date length in directory name
-D_LEN=19
+D_LEN=10
 
 # Remove directory with backups before this date
-REMOVE_BEFORE=$(date -d 'now - 14 minutes' +"%Y-%m-%dT%H:%M:%S")
+REMOVE_BEFORE=$(date -d 'now - 5 weeks' +"%Y-%m-%d")
 
 for FROM_DIR in $(find $BACKUP_DIR -maxdepth 1 -mindepth 1 -type d); do
 	# Extract date from directory name
@@ -30,7 +30,7 @@ for FROM_DIR in $(find $BACKUP_DIR -maxdepth 1 -mindepth 1 -type d); do
 		exit 1
 	fi
 	# Check if date in name is before REMOVE_BEFORE
-	if [[ $DATE < $REMOVE_BEFORE ]] ; then
+	if [[ $DATE < $REMOVE_BEFORE || $DATE == $REMOVE_DATE ]] ; then
 		# Remove directory with all it's contents
 		rm -rf $FROM_DIR
 	fi

@@ -30,7 +30,7 @@ BACKUP_DIR=$1
 
 
 # Assign formated date to DATE_STR variable
-DATE_STR=$(date -d "$2" +"%Y-%m-%dT%H:%M:%S")
+DATE_STR=$(date -d "$2" +"%Y-%m-%d")
 
 
 
@@ -41,7 +41,7 @@ for FROM_DIR in $(find $BACKUP_DIR -maxdepth 1 -mindepth 1 -type d); do
 	if [[ -n $(echo "${DAYS_IN_WEEK[@]}" | grep -w $DATE_STR) ]] ; then
 		for DAY in "${DAYS_IN_WEEK[@]}"; do
 			# Do a series of extractions for each incremental backup
-			DAY_DATE_STR=$(date -d "$DAY" +"%Y-%m-%dT%H:%M:%S")
+			DAY_DATE_STR=$(date -d "$DAY" +"%Y-%m-%d")
 			if [[ $DAY_DATE_STR < $DATE_STR || $DAY_DATE_STR == $DATE_STR ]] ; then
 				# Do the extraction for this day
 				# sudo is necessary for --same-owner

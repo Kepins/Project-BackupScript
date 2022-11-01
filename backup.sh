@@ -2,7 +2,7 @@
 
 
 # Set current date
-DATE=$(date +"%Y-%m-%dT%H:%M:%S")
+DATE=$(date +"%Y-%m-%d")
 
 
 
